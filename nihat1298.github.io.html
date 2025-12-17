@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nihat1298 - Portfolio</title>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a2e;
+            color: #e5e7eb;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav a {
+            color: #e5e7eb;
+            text-decoration: none;
+            margin: 0 2rem;
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00d4ff;
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: #00d4ff;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* SECTIONS */
+        section {
+            min-height: 100vh;
+            padding: 6rem 2rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* HOME PAGE - Hero Style */
+        #home {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #1a1a2e 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+            padding-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(0,212,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        #home h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        #home h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        #home .content {
+            position: relative;
+            z-index: 1;
+            background: rgba(15, 52, 96, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        #home img {
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(0, 212, 255, 0.3);
+            display: block;
+            margin: 0 auto 1rem;
+        }
+
+        .image-caption {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-align: center;
+            color: #e5e7eb;
+            margin-top: 1rem;
+            display: block;
+            width: 100%;
+            padding: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ABOUT PAGE - Card Grid Style */
+        #about {
+            background: linear-gradient(180deg, #16213e 0%, #0f3460 100%);
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            position: relative;
+        }
+
+        #about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(15, 52, 96, 0.15) 0%, transparent 50%);
+        }
+
+        #about h1 {
+            font-size: 3.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+
+        #about .content {
+            background: rgba(22, 33, 62, 0.8);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* PROJECTS PAGE - Modern Grid Style */
+        #projects {
+            background: #1a1a2e;
+            padding-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #projects::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        #projects h1 {
+            font-size: 3.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-card {
+            margin-top: 2rem;
+            background: linear-gradient(135deg, rgba(22, 33, 62, 0.9), rgba(15, 52, 96, 0.9));
+            border-radius: 25px;
+            padding: 3rem;
+            max-width: 700px;
+            text-align: left;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 70px rgba(0, 212, 255, 0.3);
+        }
+
+        .project-card h2 {
+            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            color: #00d4ff;
+        }
+
+        .project-card p {
+            margin-bottom: 1.5rem;
+            color: #d1d5db;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .project-card img {
+            border-radius: 15px;
+            margin: 1rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .project-card img:hover {
+            transform: scale(1.02);
+        }
+
+        .project-card .pictures-label {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .project-card a {
+            display: inline-block;
+            margin: 0.5rem 1rem 0.5rem 0;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #0f3460, #16213e);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .project-card a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.6);
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #d1d5db;
+        }
+
+        .content.gap-after {
+            margin-bottom: 2rem;
+        }
+
+        a.link {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        a.link:hover {
+            color: #0099cc;
+            text-decoration: underline;
+        }
+
+        /* FOOTER + ICONS AT BOTTOM */
+        footer {
+            background: linear-gradient(180deg, #1a1a2e, #0f0f1e);
+            padding: 3rem 1rem 2rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: transform 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0f3460, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.6rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .social-icon:hover .social-circle {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.6);
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+        }
+
+        .social-icon.github:hover .social-circle {
+            background: linear-gradient(135deg, #000000, #333333);
+        }
+
+        .social-icon.codecademy:hover .social-circle {
+            background: linear-gradient(135deg, #1F4057, #2a5a7a);
+        }
+
+        footer small {
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 600px) {
+            #home h1 {
+                font-size: 2.5rem;
+            }
+            #home h2 {
+                font-size: 1.8rem;
+            }
+            nav a {
+                margin: 0 1rem;
+                font-size: 0.9rem;
+            }
+            #about h1, #projects h1 {
+                font-size: 2.5rem;
+            }
+            .project-card {
+                padding: 2rem;
+            }
+            .image-caption {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <section id="home">
+        <h1>Home</h1>
+        <h2>Welcome, this is my personal website</h2>
+        <p class="content">
+            <img src="myphoto.jfif" alt="This is me" width="400" height="600">
+            <span class="image-caption">This is me</span>
+        </p>
+        <p class="content gap-after">
+          Hello, everyone! I'm Nihat Karasu and I'm undergraduate student in ADA University. My major is Mathematics and I like coding and developing websites. 
+        </p>
+        <p class="content">
+            View the code for this website on my GitHub repository:<br>
+            <a class="link"
+               href="https://github.com/nihat1298/nihat1298.github.io"
+               target="_blank">
+                github.com/nihat1298/nihat1298.github.io
+            </a>
+        </p>
+    </section>
+
+    <!-- ABOUT PAGE -->
+    <section id="about">
+        <h1>About</h1>
+        <p class="content">
+            I'm Nihat Karasu, i was born in 12th September 2008 in Baku. In 2014 I started primary school at school No. 164. I studied there until 7th grade. In 2020, i gave an entry exam to Physics, Mathematics and Informatics Specialized Lyceum and got accepted. I graduated in that lyseum this year with red diploma. Also in 9th, 10th and 11th grades i took part in the Republic Subject Olympiads and after failing twice, this year I finally won a silver medal which helped me to enter ADA University.
+        </p>
+    </section>
+
+    <!-- PROJECTS PAGE -->
+    <section id="projects">
+        <h1>Projects</h1>
+        <div class="project-card">
+            <h2>Our First Project</h2>
+            <p>
+                In this project, we constructed basic logic gates using transistors and other electronic components. I was member of team 84 and my team members were Aida Baghirzade, Isgandar Jafarli and Ravan Fataliyev.
+            </p>
+            <img src="project1image1.jfif" alt="" width="608" height="342">
+            <img src="project1image2.jfif" alt="" width="608" height="342">
+            <img src="project1image3.jfif" alt="" width="608" height="342">
+            <p class="pictures-label">
+                Some pictures from project 1
+            </p>
+            <p class="content">
+                Project 1 of the course Principles of Info. Systems was about logic gates. We made logic gates using transistors and other electronic components. There was a requirement to go to laboratory to get the tools. We made NOT, AND, OR, NAND and XOR gates in 3 different lab sessions. We collaborated with other teams for making NAND and XOR gates, because these gates were more complicated than the other ones. Also when any difficulty happened, Nariman teacher helped us. Overall, I want to say that it was very good experience for me and I'm lucky that I got such good teammates. You can watch our video of this project from this link: 
+            </p>
+            <a href="https://youtu.be/Z4s4WlxwelQ?si=74MPZM7lB3nmOb0D" target="_blank">Youtube</a>
+            <a href="https://dai.ly/x9seobc" target="_blank">Dailymotion</a>
+        </div>
+    </section>
+
+    <!-- ICONS AT THE BOTTOM -->
+    <footer>
+        <div class="social-icons">
+            <!-- GitHub -->
+            <a href="https://github.com/nihat1298"
+               target="_blank"
+               class="social-icon github">
+                <div class="social-circle">
+                    <i class="fab fa-github"></i>
+                </div>
+                <span>GitHub</span>
+            </a>
+
+            <!-- Codecademy (generic code icon) -->
+            <a href="https://www.codecademy.com/profiles/nihat1298"
+               target="_blank"
+               class="social-icon codecademy">
+                <div class="social-circle">
+                    <i class="fas fa-code"></i>
+                </div>
+                <span>Codecademy</span>
+            </a>
+        </div>
+        <small>© 2025 nihat1298</small>
+    </footer>
+</body>
+</html>
