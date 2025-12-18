@@ -65,15 +65,19 @@
             width: 100%;
         }
 
-        /* SECTIONS */
-        section {
+        /* PAGES (only one visible at a time) */
+        .page {
             min-height: 100vh;
             padding: 6rem 2rem 4rem;
-            display: flex;
+            display: none;                 /* hide by default */
             flex-direction: column;
             justify-content: center;
             align-items: center;
             position: relative;
+        }
+
+        .page.active {
+            display: flex;                 /* show active page */
         }
 
         /* HOME PAGE - Hero Style */
@@ -145,7 +149,6 @@
             margin-top: 1rem;
             display: block;
             width: 100%;
-            padding: 0;
             margin-left: auto;
             margin-right: auto;
         }
@@ -165,7 +168,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(15, 52, 96, 0.15) 0%, transparent 50%);
         }
@@ -393,11 +396,6 @@
             font-size: 0.85rem;
         }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
         @media (max-width: 600px) {
             #home h1 {
                 font-size: 2.5rem;
@@ -430,7 +428,7 @@
     </nav>
 
     <!-- HOME PAGE -->
-    <section id="home">
+    <div class="page active" id="home">
         <h1>Home</h1>
         <h2>Welcome, this is my personal website</h2>
         <p class="content">
@@ -438,7 +436,7 @@
             <span class="image-caption">This is me</span>
         </p>
         <p class="content gap-after">
-          Hello, everyone! I'm Nihat Karasu and I'm undergraduate student in ADA University. My major is Mathematics and I like coding and developing websites. 
+          Hello, everyone! I'm Nihat Karasu and I'm undergraduate student in ADA University. My major is Mathematics and I like coding and developing websites.
         </p>
         <p class="content">
             View the code for this website on my GitHub repository:<br>
@@ -448,18 +446,18 @@
                 github.com/nihat1298/nihat1298.github.io
             </a>
         </p>
-    </section>
+    </div>
 
     <!-- ABOUT PAGE -->
-    <section id="about">
+    <div class="page" id="about">
         <h1>About</h1>
         <p class="content">
             I'm Nihat Karasu, i was born in 12th September 2008 in Baku. In 2014 I started primary school at school No. 164. I studied there until 7th grade. In 2020, i gave an entry exam to Physics, Mathematics and Informatics Specialized Lyceum and got accepted. I graduated in that lyseum this year with red diploma. Also in 9th, 10th and 11th grades i took part in the Republic Subject Olympiads and after failing twice, this year I finally won a silver medal which helped me to enter ADA University.
         </p>
-    </section>
+    </div>
 
     <!-- PROJECTS PAGE -->
-    <section id="projects">
+    <div class="page" id="projects">
         <h1>Projects</h1>
         <div class="project-card">
             <h2>Our First Project</h2>
@@ -473,12 +471,12 @@
                 Some pictures from project 1
             </p>
             <p class="content">
-                Project 1 of the course Principles of Info. Systems was about logic gates. We made logic gates using transistors and other electronic components. There was a requirement to go to laboratory to get the tools. We made NOT, AND, OR, NAND and XOR gates in 3 different lab sessions. We collaborated with other teams for making NAND and XOR gates, because these gates were more complicated than the other ones. Also when any difficulty happened, Nariman teacher helped us. Overall, I want to say that it was very good experience for me and I'm lucky that I got such good teammates. You can watch our video of this project from this link: 
+                Project 1 of the course Principles of Info. Systems was about logic gates. We made logic gates using transistors and other electronic components. There was a requirement to go to laboratory to get the tools. We made NOT, AND, OR, NAND and XOR gates in 3 different lab sessions. We collaborated with other teams for making NAND and XOR gates, because these gates were more complicated than the other ones. Also when any difficulty happened, Nariman teacher helped us. Overall, I want to say that it was very good experience for me and I'm lucky that I got such good teammates. You can watch our video of this project from this link:
             </p>
             <a href="https://youtu.be/Z4s4WlxwelQ?si=74MPZM7lB3nmOb0D" target="_blank">Youtube</a>
             <a href="https://dai.ly/x9seobc" target="_blank">Dailymotion</a>
         </div>
-    </section>
+    </div>
 
     <!-- ICONS AT THE BOTTOM -->
     <footer>
@@ -505,5 +503,39 @@
         </div>
         <small>© 2025 nihat1298</small>
     </footer>
+
+    <script>
+        (function () {
+            const pages = Array.from(document.querySelectorAll('.page'));
+
+            function showPageFromHash() {
+                const hash = (location.hash || '#home').toLowerCase();
+                const id = hash.replace('#', '') || 'home';
+
+                let found = false;
+                pages.forEach(p => {
+                    const isActive = p.id.toLowerCase() === id;
+                    if (isActive) found = true;
+                    p.classList.toggle('active', isActive);
+                });
+
+                if (!found) {
+                    pages.forEach(p => p.classList.toggle('active', p.id.toLowerCase() === 'home'));
+                }
+
+                window.scrollTo(0, 0);
+            }
+
+            document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    location.hash = a.getAttribute('href');
+                });
+            });
+
+            window.addEventListener('hashchange', showPageFromHash);
+            showPageFromHash();
+        })();
+    </script>
 </body>
 </html>
