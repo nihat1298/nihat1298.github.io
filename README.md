@@ -396,6 +396,7 @@
             font-size: 0.85rem;
         }
 
+        /* Existing responsive */
         @media (max-width: 600px) {
             #home h1 {
                 font-size: 2.5rem;
@@ -415,6 +416,79 @@
             }
             .image-caption {
                 font-size: 1.4rem;
+            }
+        }
+
+        /* ---------- Added responsive improvements (phones/tablets) ---------- */
+
+        .page { width: 100%; }
+        .content { width: 100%; }
+
+        #home img{
+            max-width: 100%;
+            width: min(400px, 100%);
+            height: auto;
+        }
+
+        .project-card{
+            width: min(700px, 100%);
+        }
+
+        .project-card img{
+            display: block;
+            max-width: 100%;
+            width: min(608px, 100%);
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 900px){
+            nav{
+                padding: 0.9rem 0.5rem;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.6rem 1.2rem;
+            }
+
+            nav a{
+                margin: 0;
+            }
+
+            .page{
+                padding: 5.5rem 1.25rem 3.5rem;
+            }
+
+            #home .content,
+            #about .content{
+                padding: 1.75rem;
+            }
+
+            .project-card{
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 600px){
+            #home h1{ font-size: 2.3rem; }
+            #home h2{ font-size: 1.5rem; }
+
+            #about h1,
+            #projects h1{
+                font-size: 2.2rem;
+                margin-bottom: 2rem;
+            }
+
+            .image-caption{ font-size: 1.3rem; }
+
+            #home .content,
+            #about .content{
+                padding: 1.25rem;
+            }
+
+            .project-card{
+                padding: 1.25rem;
             }
         }
     </style>
